@@ -36,11 +36,85 @@ const getBooksByMainCategoryId = async bookId => {
     INNER JOIN main_categories m ON m.id = s.main_category_id
     WHERE
       m.id = ?`,
-      [bookId]
+      [bookId])
+}
+
+const getBooksByCategoryId = async subCategoryId => {
+  return await appDataSource.query(
+    `SELECT
+      id,
+      sub_category_id,
+      title,
+      image_url,
+      published_date,
+      offline_price,
+      online_price,
+      author,
+      publisher,
+      description,
+      publisher_review,
+      list,
+      created_at
+    FROM 
+      books
+    WHERE 
+      sub_category_id = ?`,
+       [subCategoryId]
+  );
+};
+
+const getBooksByName = async title => {
+  return await appDataSource.query(
+    `SELECT 
+      id,
+      sub_category_id,
+      title,
+      image_url,
+      published_date,
+      offline_price,
+      online_price,
+      author,
+      publisher,
+      description,
+      publisher_review,
+      list,
+      created_at
+    FROM 
+      books
+		WHERE 
+      title LIKE ?`,
+        ['%' + title +'%']
+  );
+};
+
+const getBooksById = async id => {
+  return await appDataSource.query(
+    `SELECT 
+      id,
+      sub_category_id,
+      title,
+      image_url,
+      published_date,
+      offline_price,
+      online_price,
+      author,
+      publisher,
+      description,
+      publisher_review,
+      list,
+      created_at
+    FROM 
+      books
+		WHERE 
+      id = ?`,
+        [id]
   );
 };
 
 module.exports = {
   getAllBooks,
-  getBooksByMainCategoryId
+  getBooksByMainCategoryId,
+  getBooksByCategoryId,
+  getBooksByName,
+  getBooksById
 };
