@@ -12,8 +12,29 @@ const getBooksByMainCategoryId = catchAsync(async (req, res) => {
   return res.status(200).json(books);
 })
 
+const getBooksByCategoryId = catchAsync(async (req, res) => {
+  const subCategoryId = req.params.id;
+  const books = await bookService.getBooksByCategoryId(subCategoryId);
+  return res.status(200).json(books);
+});
+
+const getBooksByName = catchAsync(async (req, res) => {
+  const title = req.query.title;
+  const books = await bookService.getBooksByName(title);
+  return res.status(200).json(books);
+});
+
+const getBooksById = catchAsync(async (req, res) => {
+  const id = req.params.id
+  const books = await bookService.getBooksById(id);
+  return res.status(200).json(books);
+});
  
+
 module.exports = {
   getAllBooks,
-  getBooksByMainCategoryId
+  getBooksByMainCategoryId,
+  getBooksByCategoryId,
+  getBooksByName,
+  getBooksById
 };
