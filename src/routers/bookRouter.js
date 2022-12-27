@@ -1,11 +1,10 @@
 const express = require("express");
 const { getBooksByCategoryId, getBooksByName } = require('../controllers/bookController')
-
-
+const bookController = require('../controllers/bookController')
 const router = express.Router();
 
-router.get("/search", getBooksByName);
-router.get("/subCategories/:id", getBooksByCategoryId);
+router.get("/", bookController.getAllBooks);
+router.get("/:mainCategoryId", bookController.getBooksByMainCategoryId);
 
 module.exports = router;
- 
+
