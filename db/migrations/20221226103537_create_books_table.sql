@@ -12,6 +12,7 @@ CREATE TABLE books (
     description VARCHAR(2000) NOT NULL,
     publisher_review VARCHAR(2000) NOT NULL,
     list VARCHAR(2000) NOT NULL,
+    list_number VARCHAR(300) NOT NUll,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT books_sub_category_id_fkey FOREIGN KEY (sub_category_id) REFERENCES sub_categories(id)
 )

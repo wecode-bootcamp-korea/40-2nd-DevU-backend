@@ -29,7 +29,7 @@ database
     console.log("Databse Connected!");
   })
   .catch((err) => {
-    console.log("Error during Database initialization");
+    console.log("Error during Database initialization!");
   });
 
 const PORT = process.env.PORT;
