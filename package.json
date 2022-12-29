@@ -2,7 +2,7 @@
   "name": "40-2nd-devu-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
     "test": "DOTENV_CONFIG_PATH=.env.test jest --no-cache --watchAll --setupFiles=dotenv/config"
@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/wecode-bootcamp-korea/40-2nd-DevU-backend#readme",
   "dependencies": {
-    "axios": "^1.2.1",
+    "axios": "^1.2.2",
     "cors": "^2.8.5",
     "dbmate": "^1.0.3",
     "dotenv": "^16.0.3",
