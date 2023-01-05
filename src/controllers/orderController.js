@@ -5,7 +5,7 @@ const checkOrder = async (req, res) => {
     const bookId = req.params.bookId;
     const userId = req.user.id;
 
-    if (!userId || !bookId) {
+    if (!bookId) {
       throw new Error("Key Error");
     }
 
@@ -19,14 +19,14 @@ const checkOrder = async (req, res) => {
 
 const createOrder = async (req, res) => {
   try {
-    const { bookId, online_price } = req.body;
+    const { bookId, onlinePrice } = req.body;
     const userId = req.user.id;
 
-    if (!bookId || !online_price) {
+    if (!bookId || !onlinePrice) {
       throw new Error("Key Error");
     }
 
-    const result = await orderService.createOrder(userId, bookId, online_price);
+    const result = await orderService.createOrder(userId, bookId, onlinePrice);
 
     return res.status(201).json({ result });
   } catch (err) {

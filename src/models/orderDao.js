@@ -27,7 +27,7 @@ const checkOrder = async (userId, bookId) => {
   return getBookInfoByBookId.concat(getPointsByUserId);
 };
 
-const createOrder = async (userId, bookId, online_price) => {
+const createOrder = async (userId, bookId, onlinePrice) => {
   await queryRunner.connect();
   await queryRunner.startTransaction();
 
@@ -39,7 +39,7 @@ const createOrder = async (userId, bookId, online_price) => {
         VALUES
         (?, ?, ?)
      `,
-      [userId, bookId, online_price]
+      [userId, bookId, onlinePrice]
     );
     await queryRunner.query(
       `
@@ -49,7 +49,7 @@ const createOrder = async (userId, bookId, online_price) => {
         WHERE
             id = ?
       `,
-      [online_price, userId]
+      [onlinePrice, userId]
     );
 
     let [newPoint] = await queryRunner.query(

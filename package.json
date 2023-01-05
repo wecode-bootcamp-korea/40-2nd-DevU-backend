@@ -2,7 +2,7 @@
   "name": "40-2nd-devu-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
     "test": "DOTENV_CONFIG_PATH=.env.test jest --no-cache --watchAll --setupFiles=dotenv/config"

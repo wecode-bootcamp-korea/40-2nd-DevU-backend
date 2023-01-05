@@ -3,7 +3,6 @@ const userDao = require("../models/userDao");
 
 const loginRequired = async (req, res, next) => {
   const accessToken = req.headers.authorization;
-  console.log(accessToken);
 
   if (!accessToken) {
     const error = new Error("NEED_ACCESS_TOKEN");
